@@ -114,6 +114,7 @@ Postgres.createTable = function(table, tableObj, relTable) {
 
     });
     var query = client.query("LISTEN watchers");
+    console.log('hey', query);
   });
 };
 
@@ -259,8 +260,8 @@ Postgres.insert = function(table, insertObj) {
   inputString += keys[keys.length-1] + valueString + '$' + keys.length + ');';
   insertArray.push(insertObj[keys[keys.length-1]]);
   // send request to postgresql database
-  console.log(inputString);
-  console.log(insertArray);
+  console.log('inputString', inputString);
+  console.log('insertArray', insertArray);
   pg.connect(conString, function(err, client, done) {
     console.log(err);
     client.query(inputString, insertArray, function(error, results) {
